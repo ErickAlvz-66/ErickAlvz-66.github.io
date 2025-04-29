@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Solicitud - CNT</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #005baa;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        section {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #005baa;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #005baa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #003f7f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="CNT_LOGO.png" alt="Logo CNT" class="logo">
+        <h1>Formulario de Solicitud</h1>
+    </header>
+
+    <section>
+        <h2>Ingresa tus datos</h2>
+        <form action="#" method="post">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="celular">Celular:</label>
+            <input type="tel" id="celular" name="celular" required>
+
+            <label for="servicio">Servicio:</label>
+            <input type="text" id="servicio" name="servicio" readonly>
+
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="ciudad" name="ciudad" required>
+
+            <label for="fecha">Fecha de solicitud:</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <label for="pago">Método de pago:</label>
+            <select id="pago" name="pago" required>
+                <option value="">-- Selecciona una opción --</option>
+                <option value="tarjeta">Tarjeta de débito/crédito</option>
+                <option value="efectivo">Efectivo</option>
+            </select>
+
+            <button type="submit">Enviar solicitud</button>
+        </form>
+    </section>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const servicio = params.get("servicio");
+        if (servicio) {
+            document.getElementById("servicio").value = decodeURIComponent(servicio);
+        }
+    </script>
+</body>
+</html>
